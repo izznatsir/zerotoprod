@@ -1,0 +1,16 @@
+name: Dependency's Vulnerability Audit
+on:
+  push:
+    paths:
+      - "./github/workflows/audit.yaml"
+      - "**/Cargo.toml"
+      - "**/Cargo.lock"
+      - "**/audit.toml"
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rust-lang/audit@v1
