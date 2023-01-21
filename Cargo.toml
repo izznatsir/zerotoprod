@@ -5,4 +5,17 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "zerotoprod"
+path = "src/lib.rs"
+
+[[bin]]
+name = "zerotoprod"
+path = "src/main.rs"
+
 [dependencies]
+axum = "0.6"
+tokio = { version = "1", features = ["full"] }
+
+[dev-dependencies]
+tower = "0.4"
