@@ -1,11 +1,8 @@
-use zerotoprod::app;
+use zerotoprod::run;
 
 #[tokio::main]
-async fn main() {
-    let app = app();
-
-    axum::Server::bind(&"127.0.0.1:3000".parse().unwrap())
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
+async fn main() -> std::io::Result<()> {
+    let listener =
+        std::net::TcpListener::bind("127.0.0.1:8000").expect("Failed to bind socket address.");
+    run(listener)?.await
 }

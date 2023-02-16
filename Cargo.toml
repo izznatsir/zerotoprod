@@ -14,9 +14,19 @@ name = "zerotoprod"
 path = "src/main.rs"
 
 [dependencies]
-axum = "0.6"
+actix-web = "4.3"
+reqwest = "0.11"
+serde = { version = "1", features = ["derive"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 
-[dev-dependencies]
-hyper = "0.14.23"
-tower = "0.4"
+[dependencies.sqlx]
+version = "0.6"
+default-features = false
+features = [
+	"macros",
+	"postgres",
+	"runtime-tokio-rustls",
+	"time",
+	"uuid",
+]
+
